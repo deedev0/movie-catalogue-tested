@@ -1,5 +1,5 @@
 const CONFIG = {
-  // KEY: process.env.API_KEY_TMDB,
+  KEY: process.env.API_KEY_TMDB,
   BASE_URL: 'https://api.themoviedb.org/3/',
   BASE_IMAGE_URL: 'https://image.tmdb.org/t/p/w500/',
   DEFAULT_LANGUAGE: 'en-us',
@@ -18,6 +18,4 @@ const CONFIG = {
     'https://dicoding-movie-push-notif.netlify.app/.netlify/functions/unsubscribe',
 };
 
-const getApiKey = () => process.env.API_KEY_TMDB;
-
-export { CONFIG, getApiKey };
+export default CONFIG;
