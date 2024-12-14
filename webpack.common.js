@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 // Import environment variables
 require('dotenv').config({
@@ -58,4 +59,15 @@ module.exports = {
       'process.env': JSON.stringify(process.env),
     }),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          pure_funcs: ['console.log'], // Hindari log untuk API key
+        },
+      },
+    })],
+  },
 };
